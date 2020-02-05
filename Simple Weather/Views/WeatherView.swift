@@ -34,8 +34,9 @@ struct WeatherView: View {
                 ForEach(0..<numberOfSegments, id: \.self) { hour in
                     ZStack {
                         Circle()
-                            .fill(self.controller.weatherView?[hour] ?? .white)
+                            .fill(self.colorFor(segment: hour))
                         Text(hour.description)
+                            .foregroundColor(self.textColourFor(segment: hour))
                     }
                         .frame(
                             width: self.segmentWidth,
@@ -57,6 +58,15 @@ struct WeatherView: View {
 
     func angleFor(segment: Int) -> Double {
         2 * .pi * Double(segment) / Double(numberOfSegments)
+    }
+
+    func colorFor(segment: Int) -> Color {
+        controller.weatherView![segment]
+    }
+
+    func textColourFor(segment: Int) -> Color {
+        let fill = colorFor(segment: segment)
+        return fill == Color(.darkGray) ? .white : .black
     }
 
 }
