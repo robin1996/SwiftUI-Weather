@@ -8,31 +8,27 @@
 
 import SwiftUI
 
-typealias WeatherViewModel = [Int: Color]
+typealias WeatherViewModel = [Color]
 
 extension WeatherViewModel {
 
     init(_ model: WeatherDay) {
-        var dict: WeatherViewModel = [:]
-        let currentHour = Calendar.current.component(.hour, from: Date())
-        for (index, hour) in (currentHour...currentHour + 11).enumerated() {
-            let weather = model.hourly.data[index]
+        self = model.hourly.data.prefix(24).map { weather in
             var color = Color.blue
             if weather.precipProbability < 0.3 {
                 switch weather.cloudCover {
-                case ...0.2:
+                case ...0.1:
                     color = .yellow
-                case ...0.5:
+                case ...0.4:
                     color = Color(.lightGray)
-                case ...0.75:
+                case ...0.7:
                     color = Color(.gray)
                 default:
                     color = Color(.darkGray)
                 }
             }
-            dict[hour % 12] = color
+            return color
         }
-        self = dict
     }
 
 }
