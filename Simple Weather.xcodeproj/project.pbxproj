@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5149D3B23EB41E600AC8F2E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5149D3A23EB41E600AC8F2E /* Weather.swift */; };
+		F5149D3E23EB44C500AC8F2E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5149D3D23EB44C500AC8F2E /* WeatherViewModel.swift */; };
+		F5149D4123EB45DA00AC8F2E /* DarkSkyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5149D4023EB45DA00AC8F2E /* DarkSkyController.swift */; };
 		F5D8E12A23EB415700EEF942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8E12923EB415700EEF942 /* AppDelegate.swift */; };
 		F5D8E12C23EB415700EEF942 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8E12B23EB415700EEF942 /* SceneDelegate.swift */; };
 		F5D8E12E23EB415700EEF942 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8E12D23EB415700EEF942 /* ContentView.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F5149D3A23EB41E600AC8F2E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		F5149D3D23EB44C500AC8F2E /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		F5149D4023EB45DA00AC8F2E /* DarkSkyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyController.swift; sourceTree = "<group>"; };
 		F5D8E12623EB415700EEF942 /* Simple Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D8E12923EB415700EEF942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5D8E12B23EB415700EEF942 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +43,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F5149D3723EB41AA00AC8F2E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F5D8E12923EB415700EEF942 /* AppDelegate.swift */,
+				F5D8E12B23EB415700EEF942 /* SceneDelegate.swift */,
+				F5D8E12F23EB415900EEF942 /* Assets.xcassets */,
+				F5D8E13423EB415900EEF942 /* LaunchScreen.storyboard */,
+				F5D8E13723EB415900EEF942 /* Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		F5149D3823EB41C000AC8F2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5D8E12D23EB415700EEF942 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F5149D3923EB41CE00AC8F2E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5149D3A23EB41E600AC8F2E /* Weather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5149D3C23EB44A300AC8F2E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F5149D3D23EB44C500AC8F2E /* WeatherViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F5149D3F23EB45A100AC8F2E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5149D4023EB45DA00AC8F2E /* DarkSkyController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		F5D8E11D23EB415700EEF942 = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +106,11 @@
 		F5D8E12823EB415700EEF942 /* Simple Weather */ = {
 			isa = PBXGroup;
 			children = (
-				F5D8E12923EB415700EEF942 /* AppDelegate.swift */,
-				F5D8E12B23EB415700EEF942 /* SceneDelegate.swift */,
-				F5D8E12D23EB415700EEF942 /* ContentView.swift */,
-				F5D8E12F23EB415900EEF942 /* Assets.xcassets */,
-				F5D8E13423EB415900EEF942 /* LaunchScreen.storyboard */,
-				F5D8E13723EB415900EEF942 /* Info.plist */,
+				F5149D3F23EB45A100AC8F2E /* Controllers */,
+				F5149D3C23EB44A300AC8F2E /* ViewModels */,
+				F5149D3923EB41CE00AC8F2E /* Models */,
+				F5149D3823EB41C000AC8F2E /* Views */,
+				F5149D3723EB41AA00AC8F2E /* Support */,
 				F5D8E13123EB415900EEF942 /* Preview Content */,
 			);
 			path = "Simple Weather";
@@ -146,9 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5149D3E23EB44C500AC8F2E /* WeatherViewModel.swift in Sources */,
+				F5149D3B23EB41E600AC8F2E /* Weather.swift in Sources */,
 				F5D8E12A23EB415700EEF942 /* AppDelegate.swift in Sources */,
 				F5D8E12C23EB415700EEF942 /* SceneDelegate.swift in Sources */,
 				F5D8E12E23EB415700EEF942 /* ContentView.swift in Sources */,
+				F5149D4123EB45DA00AC8F2E /* DarkSkyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
