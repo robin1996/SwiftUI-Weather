@@ -9,12 +9,10 @@
 import Foundation
 
 struct WeatherDay: Codable {
-    let timezone: String
     let hourly: dataWrapped<[WeatherHour]>
 }
 
 struct WeatherHour: Codable {
-    let time: Int
     let precipProbability, cloudCover: Double
 }
 

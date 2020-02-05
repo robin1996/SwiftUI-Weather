@@ -6,14 +6,33 @@
 //  Copyright © 2020 Robin Douglas. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
-struct WeatherViewModel {
+typealias WeatherViewModel = [Int: Color]
 
-    let timeZone: String
+extension WeatherViewModel {
 
     init(_ model: WeatherDay) {
-        timeZone = model.timezone
+        var dict: WeatherViewModel = [:]
+        let currentHour = Calendar.current.component(.hour, from: Date())
+        for (index, hour) in (currentHour...currentHour + 11).enumerated() {
+            let weather = model.hourly.data[index]
+            var color = Color.blue
+            if weather.precipProbability < 0.3 {
+                switch weather.cloudCover {
+                case ...0.2:
+                    color = .yellow
+                case ...0.5:
+                    color = Color(.lightGray)
+                case ...0.75:
+                    color = Color(.gray)
+                default:
+                    color = Color(.darkGray)
+                }
+            }
+            dict[hour % 12] = color
+        }
+        self = dict
     }
 
 }

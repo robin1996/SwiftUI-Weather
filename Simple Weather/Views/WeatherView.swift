@@ -14,7 +14,12 @@ struct WeatherView: View {
 
     var body: some View {
         VStack {
-            Text(controller.weatherView?.timeZone ?? "test")
+            VStack {
+                ForEach(0...11, id: \.self) { hour in
+                    Rectangle()
+                        .fill(self.controller.weatherView?[hour] ?? .white)
+                }
+            }
             Button("Network", action: refreshWeather)
         }
     }
