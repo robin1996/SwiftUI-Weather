@@ -12,8 +12,9 @@ typealias WeatherViewModel = [Color]
 
 extension WeatherViewModel {
 
-    init(_ model: WeatherDay) {
-        self = model.hourly.data.prefix(24).map { weather in
+    init?(_ hours: [WeatherHour]) {
+        guard hours.count == 12 else { return nil }
+        self = hours.map { weather in
             var color = Color.blue
             if weather.precipProbability < 0.3 {
                 switch weather.cloudCover {

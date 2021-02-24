@@ -21,7 +21,7 @@ struct WeatherView: View {
         diameter / 2
     }
     var numberOfSegments: Int {
-        controller.weatherView?.count ?? 0
+        controller.weatherView?.weatherView.count ?? 0
     }
     var segmentWidth: CGFloat {
         c / CGFloat(numberOfSegments) * 0.8
@@ -52,6 +52,7 @@ struct WeatherView: View {
                 .frame(width: diameter * 1.1, height: diameter * 1.1, alignment: .center)
             Spacer()
             Button("Network", action: refreshWeather)
+            Button("PM", action: setPM)
             Spacer()
         }
     }
@@ -61,7 +62,7 @@ struct WeatherView: View {
     }
 
     func colorFor(segment: Int) -> Color {
-        controller.weatherView![segment]
+        controller.weatherView!.weatherView[segment]
     }
 
     func textColourFor(segment: Int) -> Color {
@@ -75,6 +76,10 @@ extension WeatherView {
 
     func refreshWeather() {
         controller.getWeather()
+    }
+    
+    func setPM() {
+        controller.time = .pm
     }
 
 }

@@ -11,7 +11,12 @@ import Combine
 
 class DarkSkyController: ObservableObject {
 
-    @Published private(set) var weatherView: WeatherViewModel?
+    var weatherView: WeatherDayViewModel? {
+        guard weatherDayViews.count > time.rawValue else { return nil }
+        return weatherDayViews[time.rawValue]
+    }
+    @Published private var weatherDayViews: WeatherDayViewModels = []
+    @Published var time = TimeDisplayed.am
     var cancellable: AnyCancellable?
 
     func getWeather(
@@ -25,14 +30,14 @@ class DarkSkyController: ObservableObject {
             )!)
             .map { $0.data }
             .decode(type: WeatherDay.self, decoder: JSONDecoder())
-            .map(WeatherViewModel.init)
+            .map(WeatherDayViewModels.init)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { (completion) in
                 if case .failure(let error) = completion {
                     print("😤 ", error)
                 }
-            }) { [weak self] vm in
-                self?.weatherView = vm
+            }) { [weak self] vms in
+                self?.weatherDayViews = vms
             }
     }
 
